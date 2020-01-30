@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<br>
+<div class="container d-flex justify-content-around">
+
+<div th:each="post : ${posts}">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <form class="w-100" action="/posts/show">
+                <input type="hidden" name="post" th:value="${post.getId()}">
+                <button class="w-100"><h5 class="card-title"><span th:text="${post.getTitle()}"></span></h5></button>
+            </form>
+            <p class="card-text"><span th:text="${post.getBody()}"></span></p>
+            <p>Email of the owner of this post: <span th:text="${post.getUser().getEmail()}"></span></p>
+            <form action="/posts/delete">
+                <input type="hidden" name="id" th:value="${post.getId()}">
+                <button class="card-link">Delete</button>
+            </form>
+            <a href="" th:href="@{|/posts/edit/${post.getId()}/|}">
+                <button class="card-link">Edit</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<h1>Edit post by id</h1>
+<form action="/posts/edit">
+    <input type="number" name="id" placeholder="Which id do you want to edit?">
+    <input type="text" name="title" placeholder="What do you want the new title to be?">
+    <input type="text" name="body" placeholder="What do you want the new body to be?">
+
+    <button>edit</button>
+</form>
+
+<nav th:replace="partials :: footer"></nav>
+
+</body>
+</html>

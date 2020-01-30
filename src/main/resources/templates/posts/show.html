@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<h1><span th:text="${post.getTitle()}"></span></h1>
+<p><span th:text="${post.getBody()}"></span></p>
+<div class="d-flex justify-content-around flex-row">
+    <div class="d-flex justify-content-around flex-row" th:each="image : ${post.getImages()}">
+        <img th:src="${image.getUrl()}" style="height: 300px;width: 300px" src="" alt="">
+    </div>
+</div>
+
+<form action="/posts/delete">
+    <input type="hidden" name="id" th:value="${post.getId()}">
+    <button>Delete</button>
+</form>
+<nav th:replace="partials :: footer"></nav>
+
+</body>
+</html>

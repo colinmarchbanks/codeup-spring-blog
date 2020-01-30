@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>The guess page</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<h1>The number you guess is <span th:text="${guess}"></span>, the actual number was <span th:text="${actual}"></span></h1>
+<h1><span th:if="${guess} == ${actual}">You guessed correct!</span><span th:if="${guess} != ${actual}">You guessed incorrect :(</span></h1>
+<br>
+<a href="/roll-dice">Try again?</a>
+<footer th:replace="partials :: footer"></footer>
+
+</body>
+</html>

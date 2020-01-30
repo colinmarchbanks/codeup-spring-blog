@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit post page</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<form method="post" action="/posts/edit">
+    <div class="form-group">
+        <label for="title">Post Title</label>
+        <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp" th:value="${post.title}">
+    </div>
+    <div class="form-group">
+        <label for="body">Post Body</label>
+        <input name = "body" type="text" class="form-control" id="body" th:value="${post.getBody()}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<nav th:replace="partials :: footer"></nav>
+</body>
+</html>

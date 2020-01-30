@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Deimos</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+<h1>The number of days left for the deimos cohort is <span th:text="${numberOfDays}"></span>!</h1>
+
+<form action="/deimos" method="post">
+    <input type="text" name="numberOfDays">
+</form>
+
+<footer th:replace="partials :: footer"></footer>
+</body>
+</html>

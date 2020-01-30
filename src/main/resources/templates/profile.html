@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile page</title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<h1>Hello <span th:text="${username}">Var:Username</span></h1>
+<p>Your password is <span th:text="${password}">Var:Password</span></p>
+<p>Prepare to die!</p>
+
+<footer th:replace="partials :: footer"></footer>
+
+</body>
+</html>
