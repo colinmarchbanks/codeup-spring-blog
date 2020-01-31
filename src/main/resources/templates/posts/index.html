@@ -20,7 +20,8 @@
                 <button class="w-100"><h5 class="card-title"><span th:text="${post.getTitle()}"></span></h5></button>
             </form>
             <p class="card-text"><span th:text="${post.getBody()}"></span></p>
-            <p>Email of the owner of this post: <span th:text="${post.getUser().getEmail()}"></span></p>
+            <p>These are all the tags associated with this post: <a th:href="@{|/posts/showtag/${tag.getId()}/|}" th:each="tag : ${post.getTags()}" th:text="${tag.getName()}  + ' ' "></a></p>
+            <p>Email of the owner of this post: <span th:text="${post.getUser().getEmail()}"> </span></p>
             <form action="/posts/delete">
                 <input type="hidden" name="id" th:value="${post.getId()}">
                 <button class="card-link">Delete</button>

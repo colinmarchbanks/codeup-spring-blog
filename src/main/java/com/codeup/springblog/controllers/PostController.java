@@ -1,9 +1,6 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.models.Post;
-import com.codeup.springblog.models.PostsRepository;
-import com.codeup.springblog.models.User;
-import com.codeup.springblog.models.UserRepository;
+import com.codeup.springblog.models.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,9 +12,12 @@ public class PostController {
 
     private final UserRepository userDao;
 
-    public PostController(PostsRepository postDao, UserRepository userDao){
+    private final TagRepository tagDao;
+
+    public PostController(PostsRepository postDao, UserRepository userDao, TagRepository tagDao){
         this.postDao = postDao;
         this.userDao = userDao;
+        this.tagDao = tagDao;
     }
 
 
@@ -28,9 +28,9 @@ public class PostController {
         return "/posts/index";
     }
 
-    @GetMapping(path = "/posts/show")
-    public String posts(@RequestParam Long post, Model model){
-        model.addAttribute("post",postDao.getOne(post));
+    @GetMapping(path = "/posts/show/{id}")
+    public String posts(@PathVariable Long id, Model model){
+        model.addAttribute("post",postDao.getOne(id));
         return "/posts/show";
     }
 
@@ -73,10 +73,11 @@ public class PostController {
         return "/posts/index";
     }
 
-    private void setPostInfoById(Post post,Long id){
-
+    @RequestMapping(path="/posts/showtag/{id}")
+    public String tagShow(@PathVariable Long id,Model model){
+        model.addAttribute("tag",tagDao.getOne(id));
+        return "/posts/showtag";
     }
-
 //    public static void main(String[] args) {
 //        PostController postController = new PostController();
 //

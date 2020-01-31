@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${tag.getName()} +' page'"></title>
+    <nav th:replace="partials :: head"></nav>
+
+</head>
+<body>
+<nav th:replace="partials :: navbar"></nav>
+
+<h1>These are all the posts associated with the tag <span th:text="${tag.getName()}"></span></h1>
+<a href="" th:each="post : ${tag.getPosts()}" th:text="${post.getTitle()}" th:href="@{|/posts/show/${post.getId()}/|}"></a>
+<nav th:replace="partials :: footer"></nav>
+</body>
+</html>
