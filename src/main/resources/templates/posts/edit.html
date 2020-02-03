@@ -9,16 +9,15 @@
 <body>
 <nav th:replace="partials :: navbar"></nav>
 
-<form method="post" action="/posts/edit">
-    <div class="form-group">
-        <label for="title">Post Title</label>
-        <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp" th:value="${post.title}">
-    </div>
-    <div class="form-group">
-        <label for="body">Post Body</label>
-        <input name = "body" type="text" class="form-control" id="body" th:value="${post.getBody()}">
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+<form th:action="@{'/posts/edit/' + ${post.getId()}}" th:method="post" th:object="${post}">
+    Title:
+    <input th:value="${post.getTitle()}" th:field="*{title}" />
+    <br />
+    Body:
+    <input th:value="${post.getBody()}" th:field="*{body}" />
+    <br />
+    <input type="hidden" th:value="${post.getUser()}" th:field="*{user}" />
+    <input type="submit" />
 </form>
 
 <nav th:replace="partials :: footer"></nav>
