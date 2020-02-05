@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Deimos</title>
-    <nav th:replace="partials :: head"></nav>
+    <th:block th:include="partials :: head">
+    </th:block>
 
 </head>
-<body>
+<body class="bg-dark-shades">
 <nav th:replace="partials :: navbar"></nav>
 <h1>The number of days left for the deimos cohort is <span th:text="${numberOfDays}"></span>!</h1>
 

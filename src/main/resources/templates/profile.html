@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile page</title>
-    <nav th:replace="partials :: head"></nav>
-
+    <th:block th:include="partials :: head">
+    </th:block>
 </head>
 <body>
 <nav th:replace="partials :: navbar"></nav>
